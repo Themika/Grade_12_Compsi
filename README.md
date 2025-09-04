@@ -1,1 +1,1 @@
-Grade 12 Comp-Si COourse Stuff
+Grade 12 Comp-Si Course Stuff
