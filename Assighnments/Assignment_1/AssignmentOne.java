@@ -1,6 +1,6 @@
 
 package Assighnments.Assignment_1;
-
+import java.util.Scanner;  
 class AssignmentOne {
     static void Rohmbus(int length, int width) {
         for (int i = 1; i <= width; i++) {
@@ -64,10 +64,23 @@ class AssignmentOne {
     }
     public static void main(String[] args) {
         System.out.println("Hello, world!");
-        Rohmbus(5, 5);
-        Diamond(5);
-        Triangle(5);
-        Square(5);
-        Rectangle(10, 15);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your shape choice (Rohmbus, Diamond, Triangle, Square, Rectangle): ");
+        String shape = scanner.nextLine();
+        shape = shape.toLowerCase();
+        if (shape.equals("rohmbus")) {
+            Rohmbus(5, 5);
+        } else if (shape.equals("diamond")) {
+            Diamond(5);
+        } else if (shape.equals("triangle")) {
+            Triangle(5);
+        } else if (shape.equals("square")) {
+            Square(5);
+        } else if (shape.equals("rectangle")) {
+            Rectangle(10, 15);
+        } else {
+            System.out.println("Invalid shape choice.");
+        }
+        scanner.close();
     }
 }
