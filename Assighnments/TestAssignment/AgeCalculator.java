@@ -25,13 +25,13 @@ class AgeCalculator {
             // User input for birth date
             System.out.println("Welcome to the Age Calculator!");
             System.out.print("Enter your birth year: ");
-            int birthYear = sc.nextInt();
+            int birthYear = sc.nextShort();
 
             System.out.print("Enter your birth month (1-12): ");
-            int birthMonth = sc.nextInt();
+            int birthMonth = sc.nextShort();
 
             System.out.print("Enter your birth day " + "(1-" + (birthYear % 4 == 0 && birthMonth == 2 ? 29 : daysInTheYear.getOrDefault(birthMonth, 31)) + "): ");
-            int birthDay = sc.nextInt();
+            int birthDay = sc.nextShort();
 
             // Get current Year,Month,Day
             int currentYear = java.time.Year.now().getValue();
