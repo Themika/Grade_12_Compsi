@@ -17,6 +17,7 @@ public class passwordChecker {
             } else if (!password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
                 System.out.println("Password must contain at least one special character.");
             } else {
+                
                 System.out.println("Password is valid.");
                 break;
             }
