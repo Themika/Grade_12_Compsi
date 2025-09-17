@@ -1,5 +1,5 @@
 
-package Assighnments.TestAssignment;
+package Random.TestAssignment;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -30,7 +30,9 @@ class AgeCalculator {
             System.out.print("Enter your birth month (1-12): ");
             int birthMonth = sc.nextShort();
 
-            System.out.print("Enter your birth day " + "(1-" + (birthYear % 4 == 0 && birthMonth == 2 ? 29 : daysInTheYear.getOrDefault(birthMonth, 31)) + "): ");
+            System.out.print("Enter your birth day " + "(1-"
+                    + (birthYear % 4 == 0 && birthMonth == 2 ? 29 : daysInTheYear.getOrDefault(birthMonth, 31))
+                    + "): ");
             int birthDay = sc.nextShort();
 
             // Get current Year,Month,Day
