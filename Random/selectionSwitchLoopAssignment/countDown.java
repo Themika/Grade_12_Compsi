@@ -1,4 +1,4 @@
-package Assighnments.selectionSwitchLoopAssignment;
+package Random.selectionSwitchLoopAssignment;
 
 import java.util.Scanner;
 

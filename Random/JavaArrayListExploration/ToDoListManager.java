@@ -1,4 +1,4 @@
-package Assighnments.JavaArrayListExploration;
+package Random.JavaArrayListExploration;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -24,8 +24,14 @@ public class ToDoListManager {
             System.out.println(
                     "\n\nTo-Do List Manager\n1. Add Task\n2. View Tasks\n3. Remove Task\n4. Clear All Tasks\n5. Search Task\n6. Size of List\n7. Exit ");
             System.out.print("Choose an option: ");
-            task = sc.nextInt();
-            sc.nextLine();// Consume newline
+            try {
+                task = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                printCustom("Invalid input. Please enter a number.");
+                sc.nextLine(); // Clear the invalid input
+                continue;
+            }
             switch (task) {
                 case 1:
                     printCustom("Enter task to add:");
@@ -66,7 +72,7 @@ public class ToDoListManager {
                     }
                     break;
                 case 6:
-                    if(toDoList.isEmpty()) {
+                    if (toDoList.isEmpty()) {
                         printCustom("To-Do List is empty.");
                     } else {
                         printCustom("The To Do List has " + toDoList.size() + " tasks.");

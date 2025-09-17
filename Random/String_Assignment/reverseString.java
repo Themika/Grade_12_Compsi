@@ -1,4 +1,4 @@
-package Assighnments.String_Assignment;
+package Random.String_Assignment;
 
 public class reverseString {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Assighnments.String_Assignment;
+package Random.String_Assignment;
 import java.util.Scanner;
 public class passwordChecker {
     public static void main(String[] args){

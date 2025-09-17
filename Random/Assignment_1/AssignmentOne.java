@@ -1,5 +1,5 @@
 
-package Assighnments.Assignment_1;
+package Random.Assignment_1;
 
 import java.util.Scanner;
 

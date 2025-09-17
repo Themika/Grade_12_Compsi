@@ -1,4 +1,4 @@
-package Assighnments.String_Assignment;
+package Random.String_Assignment;
 import java.util.Scanner;
 public class wordReplacement {
     public static void main(String[] args) {
