@@ -178,37 +178,46 @@ public class Assignment_1 {
         }
     }
 
-    /**
+    /*
      * Sorts the inventory lists by the specified criteria ("name", "quantity", or "expiration").
      * Sorting keeps the lists synchronized so item details remain matched.
      * Prints the sorted items after sorting.
-     */
+     * Simple bubble sort for sorting items by name, quantity, or expiration date
+    */
     private static void SortItems(ArrayList<String> items, ArrayList<String> quantities, ArrayList<String> expirationDates, String criteria) {
         printCustom("\nSorting items by " + criteria + "...\n");
-        for (int i = 0; i < items.size() - 1; i++) {
-            for (int j = i + 1; j < items.size(); j++) {
-                boolean swap = false;
-                try {
-                    if (criteria.equals("name")) {
-                        if (items.get(i).compareToIgnoreCase(items.get(j)) > 0) swap = true;
-                    } else if (criteria.equals("quantity")) {
-                        int q1 = Integer.parseInt(quantities.get(i));
-                        int q2 = Integer.parseInt(quantities.get(j));
-                        if (q1 > q2) swap = true;
-                    } else if (criteria.equals("expiration")) {
-                        if (expirationDates.get(i).compareTo(expirationDates.get(j)) > 0) swap = true;
+        int n = items.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                boolean shouldSwap = false;
+                if (criteria.equals("name")) {
+                    if (items.get(j).compareToIgnoreCase(items.get(j + 1)) > 0) {
+                        shouldSwap = true;
                     }
-                } catch (NumberFormatException e) {
-                    printCustom("Error: Invalid quantity format for sorting.\n");
-                    return;
-                } catch (Exception e) {
-                    printCustom("Unexpected error during sorting: " + e.getMessage() + "\n");
-                    return;
+                } else if (criteria.equals("quantity")) {
+                    int q1 = Integer.parseInt(quantities.get(j));
+                    int q2 = Integer.parseInt(quantities.get(j + 1));
+                    if (q1 > q2) {
+                        shouldSwap = true;
+                    }
+                } else if (criteria.equals("expiration")) {
+                    if (expirationDates.get(j).compareTo(expirationDates.get(j + 1)) > 0) {
+                        shouldSwap = true;
+                    }
                 }
-                if (swap) {
-                    String tempItem = items.get(i); items.set(i, items.get(j)); items.set(j, tempItem);
-                    String tempQuantity = quantities.get(i); quantities.set(i, quantities.get(j)); quantities.set(j, tempQuantity);
-                    String tempDate = expirationDates.get(i); expirationDates.set(i, expirationDates.get(j)); expirationDates.set(j, tempDate);
+                if (shouldSwap) {
+                    // Swap all three lists to keep data together
+                    String tempItem = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, tempItem);
+
+                    String tempQuantity = quantities.get(j);
+                    quantities.set(j, quantities.get(j + 1));
+                    quantities.set(j + 1, tempQuantity);
+
+                    String tempDate = expirationDates.get(j);
+                    expirationDates.set(j, expirationDates.get(j + 1));
+                    expirationDates.set(j + 1, tempDate);
                 }
             }
         }
@@ -220,7 +229,7 @@ public class Assignment_1 {
         System.out.println();
     }
 
-    /**
+    /*
      * Prints all items currently in the inventory.
      */
     private static void printAllItems(ArrayList<String> items, ArrayList<String> quantities, ArrayList<String> expirationDates) {
