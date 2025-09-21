@@ -15,6 +15,15 @@ import java.util.Scanner;
  */
 
 public class Assignment_1 {
+    // Prints all items currently in the inventory.
+    private static void printAllItems(ArrayList<String> items, ArrayList<String> quantities, ArrayList<String> expirationDates) {
+        printCustom("\nCurrent Inventory:");
+        printItemHeader();
+        for (int i = 0; i < items.size(); i++) {
+            printItemRow(items.get(i), quantities.get(i), expirationDates.get(i));
+        }
+        System.out.println();
+    }
     //Prints a message to the console with a typing effect (character-by-character delay)
     private static void printCustom(String message) {
         for (char c : message.toCharArray()) {
@@ -253,15 +262,6 @@ public class Assignment_1 {
         System.out.println();
     }
 
-    // Prints all items currently in the inventory.
-    private static void printAllItems(ArrayList<String> items, ArrayList<String> quantities, ArrayList<String> expirationDates) {
-        printCustom("\nCurrent Inventory:");
-        printItemHeader();
-        for (int i = 0; i < items.size(); i++) {
-            printItemRow(items.get(i), quantities.get(i), expirationDates.get(i));
-        }
-        System.out.println();
-    }
 
     /*
      * Main method: Entry point for the inventory management system.
@@ -358,8 +358,14 @@ public class Assignment_1 {
                         printCustom("\nWould you like to see current items before removing? (yes/no): ");
                         String seeCurrentItems = sc.nextLine().toLowerCase();
                         // Show current items if user wants to
-                        if (seeCurrentItems.equals("yes") || seeCurrentItems.equals("y")) {
-                            printAllItems(items, quantities, expirationDates);
+                        while(true){
+                            if(seeCurrentItems.equals("yes") || seeCurrentItems.equals("y") || seeCurrentItems.equals("no") || seeCurrentItems.equals("n")){
+                                printAllItems(items, quantities, expirationDates);
+                                break;
+                            } else {
+                                printCustom("Invalid input. Please enter yes or no.");
+                                seeCurrentItems = sc.nextLine().toLowerCase();
+                            }
                         }
                         // Prompt for item name to remove
                         printCustom("Enter item name to remove: ");
@@ -371,8 +377,14 @@ public class Assignment_1 {
                         printCustom("\nWould you like to see current items before updating? (yes/no): ");
                         String seeItems = sc.nextLine().toLowerCase();
                         // Show current items if user wants to
-                        if (seeItems.equals("yes") || seeItems.equals("y")) {
-                            printAllItems(items, quantities, expirationDates);
+                        while(true){
+                            if(seeItems.equals("yes") || seeItems.equals("y") || seeItems.equals("no") || seeItems.equals("n")){
+                                printAllItems(items, quantities, expirationDates);
+                                break;
+                            } else {
+                                printCustom("Invalid input. Please enter yes or no.");
+                                seeItems = sc.nextLine().toLowerCase();
+                            }
                         }
                         // Prompt for item name to update
                         printCustom("Enter item name to update: ");
