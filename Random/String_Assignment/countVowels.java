@@ -11,7 +11,10 @@ public class countVowels {
                 vowelCount++;
             }
         }
+        String str = "Computer";
+        String subStr = str.substring(3, 6);
 
+        System.out.println("Substring: " + subStr);
         System.out.println("Number of vowels in the string: " + vowelCount);
     }
 }
