@@ -34,7 +34,7 @@ public class javaMethods {
     }
 
     public static void removeEvens(ArrayList<Integer> numbers) {
-        numbers.removeIf(num -> num % 2 == 0);
+        numbers.removeIf(i -> i % 2 == 0);
         System.out.println("List after removing even numbers: " + numbers);
     }
 
