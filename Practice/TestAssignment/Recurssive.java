@@ -38,10 +38,6 @@ public class Recurssive {
             System.out.print(0);
             return;
         }
-        if(n==1){
-            System.out.print(1);
-            return;
-        }
         int a=0;
         int b=1;
         int c;
