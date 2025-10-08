@@ -32,6 +32,10 @@ public class studentClass {
             System.out.println("Age cannot be negative. Setting age to 0.");
             age = 0;
         }
+        if(age>100){
+            System.out.println("Age seems unrealistic. Setting age to 100.");
+            age = 100;
+        }
         return age;
     }
     public void setAge(int age) {
