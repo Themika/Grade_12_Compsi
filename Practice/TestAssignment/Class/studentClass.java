@@ -5,12 +5,15 @@ public class studentClass {
     private int age;
     private float average;
     private boolean isHonors;
+    private float[] grades;
 
-    public studentClass(String name, int age, float average) {
+    public studentClass(String name, int age, float average,float[] grades) {
         this.name = name;
         this.age = age;
         this.average = average;
+        this.grades = grades;
     }
+    
     public static void printInfo(studentClass student) {
         System.out.println("Name: " + student.getName() 
         + ", Age: " + student.getAge() 
@@ -43,6 +46,12 @@ public class studentClass {
     }
 
     public float getAverage() {
+        float temp = 0.0f;
+        for(int i = 0; i < grades.length; i++) {
+            temp += grades[i];
+        }
+        average = temp / (100*grades.length);
+        average = average * 100;
         if(average < 0.0f || average > 100.0f) {
             System.out.println("Average must be between 0 and 100. Setting average to 0.");
             average = 0.0f;
@@ -54,7 +63,12 @@ public class studentClass {
     }
 
     public boolean isHonors() {
-        if(average >= 85.0) {
+        System.out.println(grades.length);
+        float temp = 0.0f;
+        for(int i = 0; i < grades.length; i++) {
+            temp += grades[i];
+        }
+        if(temp / (grades.length * 100) >= 0.85f) {
             isHonors = true;
         } else {
             isHonors = false;
