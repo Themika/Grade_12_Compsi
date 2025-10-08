@@ -1,4 +1,4 @@
-package Practice.TestAssignment;
+package Practice.TestAssignment.Miscellaneous;
 import java.util.Scanner;
 
 public class addNumber {

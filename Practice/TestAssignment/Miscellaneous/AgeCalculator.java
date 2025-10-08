@@ -1,5 +1,5 @@
 
-package Practice.TestAssignment;
+package Practice.TestAssignment.Miscellaneous;
 
 import java.util.Map;
 import java.util.Scanner;
