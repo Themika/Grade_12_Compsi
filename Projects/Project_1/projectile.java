@@ -1,3 +1,4 @@
+package Projects.Project_1;
 import java.util.Scanner;
 
 class projectile {
