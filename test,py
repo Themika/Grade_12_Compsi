@@ -1,0 +1,79 @@
+import math
+
+def shooter_calculator():
+    print("=== FTC Ball Shooter Feasibility Calculator ===")
+    print("This tool estimates wheel RPM, torque, and energy requirements.")
+    print("---------------------------------------------------------------")
+
+    # User Inputs
+    m = float(input("Ball mass (kg): "))
+    h = float(input("Desired vertical height (m): "))
+    theta_deg = float(input("Launch angle (degrees): "))
+    r = float(input("Wheel radius (m): "))
+    motor_rpm = float(input("Motor free speed (RPM): "))
+    motor_torque = float(input("Motor stall torque (N·m): "))
+    gear_ratio = float(input("Gear ratio (motor:wheel, e.g., 1 for 1:1, 3 for 3:1): "))
+    contact_time = float(input("Estimated contact time (s): "))
+    setup = input("Shooter setup (1 = single wheel, 2 = dual wheel): ")
+
+    # Convert and calculate
+    g = 9.81
+    theta = math.radians(theta_deg)
+    v_vertical = math.sqrt(2 * g * h)
+    v_required = v_vertical / math.sin(theta)
+    wheel_rpm_required = (v_required * 60) / (2 * math.pi * r)
+    wheel_tangential_speed = (2 * math.pi * r * (motor_rpm / gear_ratio)) / 60
+    delta_p = m * v_required
+    avg_force = delta_p / contact_time
+    torque_wheel = avg_force * r
+    torque_per_wheel = torque_wheel / int(setup)
+    energy = 0.5 * m * v_required**2
+
+    # Motor torque at that speed (approx linear torque drop)
+    motor_torque_available = motor_torque * (1 - (wheel_rpm_required * gear_ratio / motor_rpm))
+    wheel_torque_available = motor_torque_available * gear_ratio
+
+    # Display Results
+    print("\n--- RESULTS ---")
+    print(f"Launch angle: {theta_deg:.1f}°")
+    print(f"Height target: {h:.2f} m")
+    print(f"Required launch speed: {v_required:.2f} m/s")
+    print(f"Required wheel RPM: {wheel_rpm_required:.1f} RPM")
+    print(f"Wheel tangential speed at {motor_rpm:.0f} RPM motor (gear {gear_ratio:.2f}:1): {wheel_tangential_speed:.2f} m/s")
+
+    print(f"\nBall energy per shot: {energy:.3f} J")
+    print(f"Momentum change (Δp): {delta_p:.3f} kg·m/s")
+    print(f"Average force on ball: {avg_force:.2f} N")
+    print(f"Torque required at wheel: {torque_wheel:.3f} N·m")
+    print(f"Torque per wheel ({'dual' if setup=='2' else 'single'}-wheel): {torque_per_wheel:.3f} N·m")
+
+    print(f"\nMotor available torque at that speed (approx): {motor_torque_available:.3f} N·m")
+    print(f"Available wheel torque (after gear ratio): {wheel_torque_available:.3f} N·m")
+
+    if wheel_torque_available >= torque_per_wheel:
+        print("✅ The setup is theoretically feasible — motor torque is sufficient.")
+    else:
+        print("⚠️ The setup is torque-limited. The ball may not reach target height without:")
+        print("   - Higher gear ratio")
+        print("   - Dual-motor setup")
+        print("   - Longer contact time")
+        print("   - Flywheel energy storage")
+
+    if wheel_tangential_speed > v_required * 1.5:
+        print("⚠️ Your wheel speed is much higher than needed — consider lowering motor speed or wheel radius.")
+
+    print("\n--- QUICK SUGGESTIONS ---")
+    print(f"- Try a {gear_ratio * 1.5:.1f}:1 gear ratio for more torque (less speed)")
+    print(f"- Or try a {gear_ratio / 2:.1f}:1 ratio for higher speed if torque is enough")
+    print(f"- Adjust contact time to simulate stronger/weaker compression effects.")
+    print(f"- Energy per shot is small enough that flywheel storage is very effective.")
+
+    print("\n--- END OF REPORT ---\n")
+
+# Run interactively
+if __name__ == "__main__":
+    while True:
+        shooter_calculator()
+        again = input("Run another test? (y/n): ").strip().lower()
+        if again != "y":
+            break

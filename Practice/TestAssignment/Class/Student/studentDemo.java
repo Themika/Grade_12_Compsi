@@ -1,4 +1,4 @@
-package Practice.TestAssignment.Class;
+package Student;
 
 public class studentDemo {
     
