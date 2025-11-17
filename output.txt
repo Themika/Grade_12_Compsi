@@ -1,0 +1,29 @@
+Timing results (nanoseconds) for n = 10:
+Bubble Sort: 7800 ns (0 ms)
+Insertion Sort: 2300 ns (0 ms)
+Merge Sort: 8700 ns (0 ms)
+Quick Sort: 3600 ns (0 ms)
+
+Timing results (nanoseconds) for n = 100:
+Bubble Sort: 153000 ns (0 ms)
+Insertion Sort: 50400 ns (0 ms)
+Merge Sort: 64700 ns (0 ms)
+Quick Sort: 25000 ns (0 ms)
+
+Timing results (nanoseconds) for n = 1000:
+Bubble Sort: 3283000 ns (3 ms)
+Insertion Sort: 1663400 ns (1 ms)
+Merge Sort: 583000 ns (0 ms)
+Quick Sort: 298300 ns (0 ms)
+
+Timing results (nanoseconds) for n = 10000:
+Bubble Sort: 87281300 ns (87 ms)
+Insertion Sort: 29992200 ns (29 ms)
+Merge Sort: 2012200 ns (2 ms)
+Quick Sort: 1609000 ns (1 ms)
+
+Timing results (nanoseconds) for n = 100000:
+Bubble Sort: 11680635800 ns (11680 ms)
+Insertion Sort: 2928089500 ns (2928 ms)
+Merge Sort: 15426200 ns (15 ms)
+Quick Sort: 12268900 ns (12 ms)

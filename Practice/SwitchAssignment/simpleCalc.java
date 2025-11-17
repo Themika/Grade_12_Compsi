@@ -1,4 +1,4 @@
-package Practice.selectionSwitchLoopAssignment;
+package Practice.SwitchAssignment;
 import java.util.Scanner;
 public class simpleCalc {
     public static void main(String[] args) {

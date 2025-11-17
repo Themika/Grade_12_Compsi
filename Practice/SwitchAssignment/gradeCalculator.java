@@ -1,4 +1,4 @@
-package Practice.selectionSwitchLoopAssignment;
+package Practice.SwitchAssignment;
 
 import java.util.Scanner;
 
